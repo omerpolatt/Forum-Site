@@ -1,0 +1,25 @@
+Sosyal Medya Hesaplarıyla Giriş Yapmak İçin Gerekli Olan Client ID ve Secret Nasıl Alınır
+
+Google İçin:
+1. Google Cloud Console adresine gidin ve hesabınızla giriş yapın.
+2. Yeni bir proje oluşturun.
+3. Projenizi seçtikten sonra "API & Services" bölümüne geçin.
+4. "OAuth consent screen" kısmında projenizle ilgili bilgileri doldurun.
+5. Bilgileri doldurduktan sonra "Credentials" kısmına gidin.
+6. "Create Credentials" seçeneğine tıklayın ve "OAuth Client ID" seçeneğini ilerleyin.
+7. Uygulamanızın türünü seçin ve gerekli alanları doldurun.
+8. "Authorized redirect URIs" kısmına yönlendirme fonksiyonunuzun adresini ekleyin.
+9. Bu işlemler sonucunda Client ID ve Client Secret bilgilerinizi alabilirsiniz.
+
+GitHub İçin:
+1. GitHub hesabınıza giriş yapın ve "Settings" kısmına geçin.
+2. "Developer Settings" bölümüne girin.
+3. "OAuth Apps" kısmından yeni bir proje oluşturun.
+4. Gerekli bilgileri doldurun ve yönlendirme URL'lerinizi ekleyin.
+5. Bu adımları tamamladıktan sonra Client ID ve Client Secret bilgilerinizi alabilirsiniz.
+
+Facebook İçin:
+1. Meta for Developers sayfasına gidin ve "My Apps" kısmına geçin.
+2. "Create App" seçeneği ile yeni bir uygulama oluşturun ve gerekli bilgileri doldurun.
+3. Sol menüde bulunan "Settings" -> "Basic" bölümüne gidin.
+4. Bu sayfada Client ID ve Client Secret bilgilerinizi görebilirsiniz.

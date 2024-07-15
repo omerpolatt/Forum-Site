@@ -1,0 +1,25 @@
+How to Get Client ID and Secret to Login with Social Media Accounts
+
+For Google
+1. Go to Google Cloud Console and sign in with your account.
+2. Create a new project.
+3. After selecting your project, go to the "API & Services" section.
+4. Fill in the information about your project in the "OAuth consent screen" section.
+5. After filling in the information, go to the "Credentials" section.
+6. Click on "Create Credentials" and select "OAuth Client ID".
+7. Select the type of your application and fill in the required fields.
+8. In "Authorized redirect URIs" add the address of your redirect function.
+9. As a result, you can get your Client ID and Client Secret information.
+
+For GitHub
+1. Log in to your GitHub account and go to "Settings".
+2. Enter the "Developer Settings" section.
+3. Create a new project in the "OAuth Apps" section.
+4. Fill in the required information and add your referral URLs.
+5. After completing these steps, you can get your Client ID and Client Secret information.
+
+For Facebook
+1. Go to Meta for Developers page and go to "My Apps" section.
+2. Create a new app with the "Create App" option and fill in the required information.
+3. Go to "Settings" -> "Basic" in the left menu.
+4. On this page you can see your Client ID and Client Secret information.
