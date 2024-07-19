@@ -2,6 +2,15 @@
 
 - This project is a forum site with basic forum site features, where users can add posts and comments by logging in with their social media accounts, add images to posts and view related posts according to user activities.
 
+
+# WARNING
+
+ If you run the project **go run main.go**, if you get an error due to version 
+- **go mod init forum** 
+- **go mod tidy** 
+
+and update your project according to your visual studio.
+
 # Features
 
 - Social Media Login: Users can login with their Google, GitHub and Facebook accounts.

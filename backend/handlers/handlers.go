@@ -88,6 +88,6 @@ func ImportHandlers() {
 	fs := http.FileServer(http.Dir("./frontend"))
 	http.Handle("/frontend/", http.StripPrefix("/frontend/", fs))
 
-	uploadsFs := http.FileServer(http.Dir("./uploads"))
-	http.Handle("/uploads/", http.StripPrefix("/uploads", uploadsFs))
+	uploadsFs := http.FileServer(http.Dir("./imageuploads"))
+	http.Handle("/imageuploads/", http.StripPrefix("/imageuploads", uploadsFs))
 }

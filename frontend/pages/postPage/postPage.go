@@ -73,7 +73,7 @@ func PostPageCreateComment(w http.ResponseWriter, r *http.Request) {
 
 		// Create a unique file name
 		imageFileName := fmt.Sprintf("%d-%s", time.Now().Unix(), header.Filename)
-		imagePath = filepath.Join("uploads", "comments", imageFileName)
+		imagePath = filepath.Join("imageuploads", "comments", imageFileName)
 		outFile, err := os.Create(imagePath)
 		if err != nil {
 			http.Error(w, "ERROR: Could not save the image", http.StatusInternalServerError)

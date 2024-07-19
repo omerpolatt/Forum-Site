@@ -31,7 +31,7 @@ func CreatePostPage(w http.ResponseWriter, r *http.Request) {
 		if err == nil {
 			defer image.Close()
 			// Create a unique file name
-			imagePath = filepath.Join("uploads", header.Filename)
+			imagePath = filepath.Join("imageuploads", header.Filename)
 			outFile, err := os.Create(imagePath)
 			if err != nil {
 				http.Error(w, "ERROR: Could not save the image", http.StatusInternalServerError)
