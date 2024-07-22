@@ -2,6 +2,7 @@ package requests
 
 import (
 	"bytes"
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -451,6 +452,66 @@ func DeleteCommentRequest(apiURL string, commentId string, cookieValue string) e
 	req.AddCookie(&http.Cookie{Name: "session_token", Value: cookieValue})
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		bodyString := string(bodyBytes)
+		return fmt.Errorf(bodyString)
+	}
+
+	return nil
+}
+
+// GetAllUsersRequest admin sayfasında tüm kullanıcı bilgilerini çeker
+func GetAllUsers(db *sql.DB) ([]structs.User, error) {
+	query := "SELECT id, username, email, role FROM USERS"
+	rows, err := db.Query(query)
+	if err != nil {
+		fmt.Println("Error fetching users:", err)
+		return nil, err
+	}
+	defer rows.Close()
+
+	var users []structs.User
+	for rows.Next() {
+		var user structs.User
+		err := rows.Scan(&user.ID, &user.UserName, &user.Email, &user.Role)
+		if err != nil {
+			fmt.Println("Error scanning user:", err)
+			return nil, err
+		}
+		users = append(users, user)
+	}
+	if err = rows.Err(); err != nil {
+		fmt.Println("Error during rows iteration:", err)
+		return nil, err
+	}
+
+	return users, nil
+}
+
+// PromoteUserRequest kullanıcının rolünü günceller
+func PromoteUserRequest(apiURL string, username string, newRole string, cookieValue string) error {
+	formData := url.Values{}
+	formData.Set("username", username)
+	formData.Set("role", newRole)
+
+	encodedFormData := formData.Encode()
+
+	req, err := http.NewRequest("POST", apiURL, strings.NewReader(encodedFormData))
+	if err != nil {
+		return err
+	}
+
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.AddCookie(&http.Cookie{Name: "session_token", Value: cookieValue})
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

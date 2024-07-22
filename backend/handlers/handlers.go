@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 
+	admin "forum/backend/controllers/admiin"
 	createcomment "forum/backend/controllers/create/createComment"
 	createpost "forum/backend/controllers/create/createPost"
 	deleteaccount "forum/backend/controllers/delete/deleteAccount"
@@ -22,6 +23,7 @@ import (
 	"forum/backend/controllers/register"
 	downvote "forum/backend/controllers/votes/downVote"
 	upvote "forum/backend/controllers/votes/upVote"
+	adminpage "forum/frontend/pages/adminPage"
 	createpostpage "forum/frontend/pages/createPostPage"
 	deleteaccountpage "forum/frontend/pages/deleteAccountPage"
 	loginpage "forum/frontend/pages/loginPage"
@@ -68,6 +70,8 @@ func ImportHandlers() {
 	http.HandleFunc("/callback/facebook", facebook.HandleFacebookCallback)
 	http.HandleFunc("/login/facebook", facebook.HandleFacebookLogin)
 
+	http.HandleFunc("/api/admin", admin.Admin)
+
 	// Front-end
 	http.HandleFunc("/", mainpage.MainPage)
 	http.HandleFunc("/register", registerpage.RegisterPage)
@@ -84,6 +88,8 @@ func ImportHandlers() {
 	http.HandleFunc("/deletecomment", mycommentspage.DeleteMyComment)
 	http.HandleFunc("/myvotedposts", myvotedpostspage.MyVotedPostsPage)
 	http.HandleFunc("/search", searchedpostspage.SearchedPostsPage)
+
+	http.HandleFunc("/admin", adminpage.AdminPageHandler)
 
 	fs := http.FileServer(http.Dir("./frontend"))
 	http.Handle("/frontend/", http.StripPrefix("/frontend/", fs))

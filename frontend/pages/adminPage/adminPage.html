@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.UserName}}</td>
+            <td>{{.Email}}</td>
+            <td>{{.Role}}</td>
+            <td>
+                <form action="/admin" method="POST">
+                    <input type="hidden" name="user_id" value="{{.ID}}">
+                    {{if eq .Role "user"}}
+                        <input type="submit" value="Promote to Moderator">
+                    {{else if eq .Role "moderator"}}
+                        <input type="submit" value="Demote to User">
+                    {{end}}
+                </form>
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</body>
+</html>

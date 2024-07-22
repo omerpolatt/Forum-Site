@@ -24,3 +24,10 @@ type PostWithComments struct {
 	Post     Post
 	Comments []Comment
 }
+
+type User struct {
+	ID       int    `json:"id"`
+	UserName string `json:"username"`
+	Email    string `json:"email"`
+	Role     string `json:"role"`
+}
